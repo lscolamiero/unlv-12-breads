@@ -22,6 +22,6 @@ breads.get('/:arrayIndex', (req, res) => {
     } else {
       res.send('404')
     }
-  })  
+  })
 
 module.exports = breads
