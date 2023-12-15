@@ -1,7 +1,7 @@
 const express = require('express')
 const breads = express.Router()
 const Bread = require("../models/bread.js")
-//const bread = require('../models/bread.js')
+const Baker = require('../models/baker.js')
 
 //INDEX
 //http://http://127.0.0.1:3000/breads/
@@ -17,7 +17,12 @@ breads.get('/', (req, res) => {
 
 // NEW (GETS THE CREATE NEW BREAD FORM)
 breads.get('/new', (req, res) => {
-  res.render('new')
+  Baker.find()
+    .then(foundBakers => {
+      res.render('new', {
+        bakers: foundBakers
+      })
+    })
 })
 
 // CREATE
@@ -64,17 +69,22 @@ breads.get('/data/seed', (req, res) => {
 
 // EDIT
 breads.get('/:id/edit', (req, res) => {
-  Bread.findById(req.params.id)
-    .then(foundBread => {
-      res.render('edit', {
-        bread: foundBread
-      })
+  Baker.find()
+    .then(foundBakers => {
+      Bread.findById(req.params.id)
+        .then(foundBread => {
+          res.render('edit', {
+            bread: foundBread,
+            bakers: foundBakers
+          })
+        })
     })
 })
 
 // SHOW
 breads.get('/:id', (req, res) => {
   Bread.findById(req.params.id)
+    .populate('baker')
     .then(foundBread => {
       const bakedBy = foundBread.getBakedBy()
       console.log(bakedBy)
