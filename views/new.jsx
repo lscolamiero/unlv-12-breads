@@ -10,6 +10,15 @@ function New() {
         <input type="text" name="name" id="name" pattern="/^[a-z ,.'-]+$/i" title="Must be a bread name only" required />
         <label htmlFor="image">Image</label>
         <input type="text" name="image" id="image" pattern="^[^\s]+\.(jpg|jpeg|png|gif|bmp)$" title="Must be an image only" />
+        <label htmlFor="baker">Baker</label>
+        <select name="baker" id="baker">
+          <option value="Rachel">Rachel</option>
+          <option value="Monica">Monica</option>
+          <option value="Joey">Joey</option>
+          <option value="Chandler">Chandler</option>
+          <option value="Ross">Ross</option>
+          <option value="Phoebe">Phoebe</option>
+        </select>
         <label htmlFor="hasGluten">Has Gluten?</label>
         <input type="checkbox" name="hasGluten" id="hasGluten" defaultChecked />
         <br />
