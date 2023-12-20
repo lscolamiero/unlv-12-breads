@@ -2,7 +2,7 @@
   "name": "unlv-12-breads",
   "version": "1.0.0",
   "engines": {
-    "node": "18.18.2"
+    "node": ">=18.18.0 <19.0.0"
   },
   "description": "",
   "main": "server.js",
